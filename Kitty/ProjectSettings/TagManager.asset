@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background - Scene
+    uniqueID: 1535397109
+    locked: 0
+  - name: Background - Obstacles
+    uniqueID: 1584172837
+    locked: 0
+  - name: Background - Toys
+    uniqueID: 2332710147
+    locked: 0
+  - name: Behind Cat
+    uniqueID: 302602955
+    locked: 0
+  - name: Cat Itself
+    uniqueID: 3023487781
+    locked: 0
+  - name: In Front Cat
+    uniqueID: 826344667
+    locked: 0
+  - name: Foreground - Obstacles
+    uniqueID: 1729351935
+    locked: 0
+  - name: Foreground - Toys
+    uniqueID: 2840056631
+    locked: 0
