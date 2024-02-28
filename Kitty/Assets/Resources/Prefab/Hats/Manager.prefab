@@ -97,3 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b3a16f6152e0f741ba065043231153a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockLevel: 0
+  currentLevel: 0
+  upgradable: 0
+  itemPricesPerLevel:
+  - level: 1
+    cost: 100

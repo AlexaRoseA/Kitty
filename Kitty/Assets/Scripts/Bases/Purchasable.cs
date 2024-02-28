@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class CostPerLevel
 {
     public int level;
@@ -12,7 +14,6 @@ public class CostPerLevel
         this.level = level;
         this.cost = cost;
     }
-
 }
 
 public class Purchasable : MonoBehaviour
@@ -100,7 +101,7 @@ public class Purchasable : MonoBehaviour
     /// <param name="payment"></param>
     public void PurchaseItem(int payment)
     {
-        if (!purchased)
+        if (!purchased && unlocked)
         {
             if (Player.CanIPurchaseSomething(payment))
             {
@@ -119,7 +120,7 @@ public class Purchasable : MonoBehaviour
 
             }
         }
-        else
+        else if (unlocked)
         {
             CheckIfUpgradeItem(payment);
         }
