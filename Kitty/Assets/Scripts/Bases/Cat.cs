@@ -67,7 +67,7 @@ public abstract class Cat : MonoBehaviour
     /// </summary>
     /// <param name="catName">Name of the cat</param>
     /// <param name="type">Species type</param>
-    public Cat(string catName, Type type, Profession profession)
+    public Cat(string catName, Type type, Profession profession, GameObject hat = null)
     {
         position = new Vector2(0, 0);
         ani = GetComponent<Animator>();
@@ -87,7 +87,7 @@ public abstract class Cat : MonoBehaviour
     /// </summary>
     /// <param name="catName"></param>
     /// <param name="profession"></param>
-    public Cat(string catName, Profession profession)
+    public Cat(string catName, Profession profession, GameObject hat = null)
     {
         position = new Vector2(0, 0);
         ani = GetComponent<Animator>();

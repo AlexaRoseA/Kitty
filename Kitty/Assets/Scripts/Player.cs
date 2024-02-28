@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     public Player(string username)
     {
         Player.username = username;
+    }
+
+    void Awake()
+    {
         Player.level = 1;
         this.exp = 0;
     }

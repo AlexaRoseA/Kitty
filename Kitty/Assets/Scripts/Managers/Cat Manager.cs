@@ -19,8 +19,8 @@ public enum Profession
     Miner,
     Manager,
     Banker,
+    Designer,
     Gardener,
-    Designer
 }
 
 public class CatManager : MonoBehaviour
@@ -30,16 +30,22 @@ public class CatManager : MonoBehaviour
 
     public Dictionary<Profession, GameObject> hatDictionary = new Dictionary<Profession, GameObject>();
 
+    public List<Profession> unlockedProfessions = new List<Profession>();
+
+    [SerializeField]
+    private SortedList<Profession, int> levelReqPer = new SortedList<Profession, int>();
+
+
     void Start()
     {
         hatPrefabs = Resources.LoadAll<GameObject>("Prefab/Hats");
         GenerateDictionaryHats();
+        PopulateLevels();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CreateRandomCat()
     {
-        
+
     }
 
     /// <summary>
@@ -55,6 +61,43 @@ public class CatManager : MonoBehaviour
             if (foundInEnum != false)
             {
                 hatDictionary.Add((Profession)pro, hatObj);
+            }
+        }
+    }
+
+    private void PopulateLevels()
+    {
+        levelReqPer.Add(Profession.Labor, 1);
+        levelReqPer.Add(Profession.Lumber, 2);
+        levelReqPer.Add(Profession.Miner, 3);
+        levelReqPer.Add(Profession.Manager, 5);
+        levelReqPer.Add(Profession.Banker, 6);
+        levelReqPer.Add(Profession.Designer, 10);
+        levelReqPer.Add(Profession.Gardener, 12);
+
+        UnlockProfessionForMyLevel();
+    }
+
+    private void UnlockProfessionForMyLevel()
+    {
+        foreach (Profession p in levelReqPer.Keys)
+        {
+            // Skip if already in unlocked professions
+            if (unlockedProfessions.Contains(p))
+            {
+                break;
+            }
+
+            levelReqPer.TryGetValue(p, out int level);
+
+            Debug.Log(Player.PlayerLevel + " comparing to " + level);
+
+            if (level <= Player.PlayerLevel)
+            {
+                unlockedProfessions.Add(p);
+            } else
+            {
+                return;
             }
         }
     }
