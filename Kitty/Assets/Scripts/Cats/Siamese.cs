@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Siamese : Cat
 {
-    Siamese(string catName, Type type, Profession pro) : base (catName, type, pro)
+    Siamese(string catName, Profession pro) : base (catName, pro)
     {
         type = Type.Siamese;
     }
 
     public override void Lifecycle()
     {
-        // lifecycle 
+        // lifecycle override
     }
 }

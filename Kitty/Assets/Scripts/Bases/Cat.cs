@@ -1,14 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum Type
-{
-    Orange,
-    White,
-    Siamese,
-    LongHair,
-    Tabby
-}
 
 public enum Status
 {
@@ -36,16 +28,6 @@ public enum Emotion
     Devious
 }
 
-public enum Profession
-{
-    Labor,
-    Lumber,
-    Miner,
-    Manager,
-    Banker,
-    Gardener,
-    Designer
-}
 public abstract class Cat : MonoBehaviour
 {
     // Variables
@@ -81,7 +63,7 @@ public abstract class Cat : MonoBehaviour
 
     // Base
     /// <summary>
-    /// Base constructor for a cat
+    /// Base constructor for a cat (type not known or random)
     /// </summary>
     /// <param name="catName">Name of the cat</param>
     /// <param name="type">Species type</param>
@@ -89,6 +71,27 @@ public abstract class Cat : MonoBehaviour
     {
         position = new Vector2(0, 0);
         ani = GetComponent<Animator>();
+        this.catName = catName;
+
+        this.status = Status.Idle;
+        this.emote = Emotion.Neutral;
+        this.profession = profession;
+
+        this.level = 1;
+        this.health = 100;
+        this.hunger = 100;
+    }
+
+    /// <summary>
+    /// Base constructor when type is known
+    /// </summary>
+    /// <param name="catName"></param>
+    /// <param name="profession"></param>
+    public Cat(string catName, Profession profession)
+    {
+        position = new Vector2(0, 0);
+        ani = GetComponent<Animator>();
+        this.catName = catName;
 
         this.status = Status.Idle;
         this.emote = Emotion.Neutral;
