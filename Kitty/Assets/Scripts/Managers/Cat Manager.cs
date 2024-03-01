@@ -62,9 +62,7 @@ public class CatManager : MonoBehaviour
         GenerateDictionaryCat();
 
         PopulateLevels();
-        UnlockCat(Type.Siamese);
-
-        CreateNonSpecificCat();
+        //UnlockCat(Type.Siamese);
     }
 
     /// <summary>
@@ -177,7 +175,7 @@ public class CatManager : MonoBehaviour
         else
         {
             Debug.Log("Bypassing hat unlock need.");
-            hatPrefab = hatPrefabs.Where(obj => obj.name == type.ToString()).SingleOrDefault();
+            hatPrefab = hatPrefabs.Where(obj => obj.name == pro.ToString()).SingleOrDefault();
             Instantiate(hatPrefab, catItself.transform.GetChild(1).transform);
         }
 
