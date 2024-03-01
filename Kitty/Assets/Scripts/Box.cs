@@ -6,33 +6,37 @@ public class Box : MonoBehaviour
 {
     // Start is called before the first frame update
     Animator ani;
-    GameObject cat;
 
     private bool opened = false;
 
+    GameObject catInside = null;
+
+    public bool Opened { get { return opened; } }
+
+    public GameObject CatInside { get { return catInside; } set { catInside = value; } }
+
+    private BoxManager boxMan;
+
     void Start()
     {
-        ani = GetComponent<Animator>();
+        ani = GetComponent<Animator>();    
+        boxMan = GameObject.Find("Box Manager").GetComponent<BoxManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OpenBox()
+    public void OpenBox()
     {
         if(!opened)
         {
             ani.SetBool("Open", true);
             opened = true;
         }
-
     }
-    
-    void ChooseCat()
+
+    public void CloseBox()
     {
-
+        catInside.SetActive(true);
+        boxMan.FreeToOpenNextBox = true;
+        Destroy(this.gameObject);
     }
+
 }

@@ -45,11 +45,16 @@ public abstract class Cat : MonoBehaviour
 
     protected Profession profession;
 
+    protected Rarity rarity;
+
     protected float hunger;
 
     protected float health;
 
     protected int level;
+
+    [SerializeField]
+    protected Sprite boxIcon;
 
     // Getters/Setters
     public Type CatType { get { return type; } set { type = value; }  }
@@ -60,6 +65,8 @@ public abstract class Cat : MonoBehaviour
     public Animator Ani { get { return ani; } }
     public Emotion Emote { get { return emote; }  set { emote = value; } }
     public Profession CatProfession { get { return profession; } set { profession = value; } }
+    public Rarity Rarity { get { return rarity; } }
+    public Sprite BoxIcon { get { return boxIcon; } }
 
     // Base
     /// <summary>

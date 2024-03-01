@@ -54,15 +54,20 @@ public class CatManager : MonoBehaviour
     // Cats unlocked to purchase for the ranch
     List<GameObject> catsUnlocked = new List<GameObject>();
 
+    BoxManager boxMan;
+
     void Start()
     {
+        boxMan = GameObject.Find("Box Manager").GetComponent<BoxManager>();
         hatPrefabs = Resources.LoadAll<GameObject>("Prefab/Hats");
         catPrefabs = Resources.LoadAll<GameObject>("Prefab/Cats");
         GenerateDictionaryHats();
         GenerateDictionaryCat();
 
         PopulateLevels();
-        //UnlockCat(Type.Siamese);
+        UnlockCat(Type.Siamese);
+
+        boxMan.Setup();
     }
 
     /// <summary>
@@ -70,11 +75,11 @@ public class CatManager : MonoBehaviour
     /// professions the player has unlocked with the cats
     /// they have unlocked.
     /// </summary>
-    public void CreateNonSpecificCat()
+    public GameObject CreateNonSpecificCat()
     {
         // Generate a random cat
         GameObject catPrefab = catsUnlocked[UnityEngine.Random.Range(0, catsUnlocked.Count - 1)];
-        GameObject catItself = Instantiate(catPrefab);
+        GameObject catItself = Instantiate(catPrefab, transform);
 
         // Generate a random hat, add as child to cat
         Profession ranProfession = unlockedProfessions[UnityEngine.Random.Range(0, unlockedProfessions.Count - 1)];
@@ -84,6 +89,7 @@ public class CatManager : MonoBehaviour
 
         // Add cat to cats owned
         catsOwned.Add(catItself);
+        return catItself;
     }
 
     /// <summary>
@@ -93,7 +99,7 @@ public class CatManager : MonoBehaviour
     /// </summary>
     /// <param name="type">Cat type</param>
     /// <param name="unlocked">Should the cat be unlocked already? Default is true</param>
-    public void CreateSpecificCatRandomHat(Type type, bool unlocked = true)
+    public GameObject CreateSpecificCatRandomHat(Type type, bool unlocked = true)
     {
         GameObject catPrefab = null;
         GameObject catItself = null;
@@ -106,12 +112,12 @@ public class CatManager : MonoBehaviour
                 Debug.Log("You have not unlocked this cat yet. Creating random cat instead.");
                 catPrefab = catsUnlocked[UnityEngine.Random.Range(0, catsUnlocked.Count - 1)];
             }
-            catItself = Instantiate(catPrefab);
+            catItself = Instantiate(catPrefab, transform);
         } else
         {
             Debug.Log("Bypassing cat unlock need.");
             catPrefab = catPrefabs.Where(obj => obj.name == type.ToString()).SingleOrDefault();
-            catItself = Instantiate(catPrefab);
+            catItself = Instantiate(catPrefab, transform);
         }
 
         // Generate a random hat, add as child to cat
@@ -122,6 +128,7 @@ public class CatManager : MonoBehaviour
 
         // Add cat to cats owned
         catsOwned.Add(catItself);
+        return catItself;
     }
 
     /// <summary>
@@ -131,7 +138,7 @@ public class CatManager : MonoBehaviour
     /// <param name="pro">Cat profession</param>
     /// <param name="unlockedCat">Require cat to be unlocked? Default is true</param>
     /// <param name="unlockedHat">Require hat to be unlocked? Default is true</param>
-    public void CreateSpecificCatSpecificHat(Type type, Profession pro, bool unlockedCat = true, bool unlockedHat = true)
+    public GameObject CreateSpecificCatSpecificHat(Type type, Profession pro, bool unlockedCat = true, bool unlockedHat = true)
     {
         GameObject catPrefab = null;
         GameObject catItself = null;
@@ -144,13 +151,13 @@ public class CatManager : MonoBehaviour
                 Debug.Log("You have not unlocked this cat yet. Creating random cat instead.");
                 catPrefab = catsUnlocked[UnityEngine.Random.Range(0, catsUnlocked.Count - 1)];
             }
-            catItself = Instantiate(catPrefab);
+            catItself = Instantiate(catPrefab, transform);
         }
         else
         {
             Debug.Log("Bypassing cat unlock need.");
             catPrefab = catPrefabs.Where(obj => obj.name == type.ToString()).SingleOrDefault();
-            catItself = Instantiate(catPrefab);
+            catItself = Instantiate(catPrefab, transform);
         }
 
         GameObject hatPrefab = null;
@@ -181,6 +188,7 @@ public class CatManager : MonoBehaviour
 
         // Add cat to cats owned
         catsOwned.Add(catItself);
+        return catItself;
     }
 
     /// <summary>
