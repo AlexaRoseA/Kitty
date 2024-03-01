@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Siamese : Cat
+public class White : Cat
 {
     private void Start()
     {
-        type = Type.Siamese;
+        type = Type.White;
         rarity = Rarity.Common;
     }
-
-    Siamese(string catName, Profession pro) : base (catName, pro)
+    White(string catName, Profession pro) : base(catName, pro)
     {
         Start();
     }
