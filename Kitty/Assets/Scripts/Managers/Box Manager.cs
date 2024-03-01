@@ -34,7 +34,7 @@ public class BoxManager : MonoBehaviour
         boxRarityDictionary.Add(Rarity.Rare, boxList[2]);
         boxRarityDictionary.Add(Rarity.Ultra, boxList[3]);
 
-        OpenBoxRandomCatMethod();
+        //OpenBoxRandomCatMethod();
     }
 
     /// <summary>
