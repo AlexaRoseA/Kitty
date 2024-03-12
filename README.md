@@ -1,4 +1,4 @@
-# Kitty
+# Kitty Manager game 
 A cat task simulator that handles opening boxes with cats of set types, job handling, and other statistics.
 
 - Cat Manager (stores how many cats are held currently.)
